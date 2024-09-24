@@ -9,8 +9,7 @@ RUN --mount=type=bind,source=fs,target=/mnt apt update && \
         nginx \
         supervisor \
         wget \
-        nano \
-        cron && \
+        nano && \
     apt install -y \
         libgmpxx4ldbl \
         libgmp-dev \
@@ -84,13 +83,17 @@ RUN --mount=type=bind,source=fs,target=/mnt apt update && \
         libbz2-dev \
         libssh2-1-dev && \
     curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer && \
-    apt-get clean autoclean && \
-    apt-get autoremove --yes && \
-    rm -rf /var/lib/apt/lists/* && \
     mkdir -p /run/php /run/nginx && \
     rm -f /var/log/nginx/access.log /var/log/nginx/error.log && \
     ln -s /dev/stdout /var/log/nginx/access.log && \
     ln -s /dev/stderr /var/log/nginx/error.log && \
-    cp -Rv /mnt/* /
+    wget -O /tmp/tasker.tar.gz https://github.com/adhocore/gronx/releases/download/v1.8.0/tasker_1.8.0_linux_amd64.tar.gz && \
+    tar xvzfC /tmp/tasker.tar.gz /tmp/ && \
+    mv /tmp/tasker_1.8.0_linux_amd64/bin/tasker /usr/local/bin/tasker && \
+    rm -fr /tmp/tasker.tar.gz /tmp/tasker_1.8.0_linux_amd64 && \
+    cp -Rv /mnt/* / && \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/apt/lists/*
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
