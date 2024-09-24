@@ -15,9 +15,9 @@ jobs:
       matrix:
         version: ["7.4", "8.0", "8.1", "8.2", "8.3"]
         variant: ["mysql-nginx", "mysql-nginx-ioncube"]
-      exclude:
-      - version: "8.0"
-        variant: "mysql-nginx-ioncube"
+        exclude:
+        - version: "8.0"
+          variant: "mysql-nginx-ioncube"
     name: ${{ matrix.version }} ${{ matrix.variant }}
     permissions:
       contents: read
