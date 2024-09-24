@@ -9,8 +9,7 @@ RUN --mount=type=bind,source=fs,target=/mnt apt update && \
         nginx \
         supervisor \
         wget \
-        nano && \
-    apt install -y \
+        nano \
         libgmpxx4ldbl \
         libgmp-dev \
         libwebp-dev \

@@ -10,8 +10,6 @@ RUN --mount=type=bind,source=fs,target=/mnt apt update && \
         supervisor \
         wget \
         nano \
-        cron && \
-    apt install -y \
         libgmpxx4ldbl \
         libgmp-dev \
         libwebp-dev \
