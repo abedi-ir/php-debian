@@ -39,6 +39,7 @@ RUN --mount=type=bind,source=fs,target=/mnt apt update && \
     docker-php-ext-configure gd --with-jpeg --with-webp --with-xpm --with-freetype && \
     docker-php-ext-enable redis && \
     docker-php-ext-install \
+        ftp \
         opcache \
         mysqli \
         pdo \
